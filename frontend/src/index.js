@@ -1,7 +1,7 @@
 'use strict';
 import "./css/style.css";
 import Icon from './assets/img/logo512.png';
-import printMe from "./print";
+import Print from "./print";
 
 function component() {
     const element = document.createElement('div');
@@ -11,7 +11,7 @@ function component() {
     element.textContent = 'Hello webpack';
     button.textContent = 'Click me and check the console';
 
-    button.addEventListener('click', printMe);
+    button.addEventListener('click', Print.bind(null, 'Hello Webpack!'));
 
     const myIcon = new Image();
     myIcon.src = Icon;
