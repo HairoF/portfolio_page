@@ -1,0 +1,22 @@
+node_modules/
+
+build/
+dist/
+
+.eslintrc
+
+# misc
+/connect.lock
+/coverage/*
+/report_*
+/reports/
+.sass-cache/
+*.log
+
+# Linux 
+.directory
+
+# dotenv environment variables file
+.env
+.env.test
+.env.production
