@@ -1,14 +1,24 @@
-
-h1 {
-    text-align: center;
-    color: rgb(237, 100, 127);
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.hello {
-    color: rgb(40, 225, 40);
-    background: url('../assets/img/logo512.png');
+body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
 }
 img {
     max-width: 100%;
-    width: 100px;
-    height: 100px;
+    display: block;
+}
+article > * + * {
+    margin-top: 1em;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
 }
