@@ -1,0 +1,53 @@
+.main {
+
+}
+
+.intro {
+    display: flex;
+    justify-content: space-between;
+    // border: 1px solid red;
+
+    &__animation {
+        margin-top: calc(286px - 108px);
+        flex: 0 0 50%;
+    }
+
+    &__name {
+
+        color: #fff;
+
+        .name__title {
+            margin-left: 2px;
+            margin-top: calc(301px - 108px);
+            font-style: normal;
+            font-weight: bold;
+            font-size: 78px;
+            line-height: 1.16;
+        }
+        .name__subtitle {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 30px;
+            line-height: 1.5;
+        }
+        .name__info {
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid red;
+            max-width: 415px;
+            &-item {
+                font-style: normal;
+                font-weight: normal;;
+                padding: 2px 16px;
+                background: #1378EF;
+                border-radius: 24px;
+                margin: 0 20px 20px 0;
+                // &:not(:last-child) {
+
+                // }
+            }
+            
+        }
+    }
+
+}

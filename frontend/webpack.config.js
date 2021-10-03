@@ -68,6 +68,9 @@ module.exports = {
         new HtmlWebpackPartialsPlugin({
             path: path.resolve(__dirname, './src/header/header.html')
         }),
+        new HtmlWebpackPartialsPlugin({
+            path: path.resolve(__dirname, './src/main/main.html')
+        }),
         new MiniCssExtractPlugin({
             filename: filename('css')
         }),
@@ -79,7 +82,11 @@ module.exports = {
                 },
                 {
                     from: path.resolve(__dirname, 'src/header/logo.svg'),
-                    to: path.resolve(__dirname, 'dist')
+                    to: path.resolve(__dirname, 'dist/img')
+                },
+                {
+                    from: path.resolve(__dirname, 'src/main/animation-circle.svg'),
+                    to: path.resolve(__dirname, 'dist/img')
                 },
             ]
         })
