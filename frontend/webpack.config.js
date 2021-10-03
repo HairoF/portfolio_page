@@ -3,6 +3,8 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
+const HtmlWebpackPartialsPlugin = require('html-webpack-partials-plugin');
+
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -48,8 +50,7 @@ module.exports = {
     mode: 'development',
     context: path.resolve(__dirname, 'src'),
     entry: {
-        index: './index.ts',
-        print: './print.ts'
+        index: './index.ts'
     },
     devServer: {
         static: './dist',
@@ -64,6 +65,9 @@ module.exports = {
         new HTMLWebpackPlugin({
             template: './index.html'
         }),
+        new HtmlWebpackPartialsPlugin({
+            path: path.resolve(__dirname, './src/header/header.html')
+        }),
         new MiniCssExtractPlugin({
             filename: filename('css')
         }),
@@ -74,7 +78,7 @@ module.exports = {
                     to: path.resolve(__dirname, 'dist')
                 },
                 {
-                    from: path.resolve(__dirname, 'src/assets/img/howto.png'),
+                    from: path.resolve(__dirname, 'src/header/logo.svg'),
                     to: path.resolve(__dirname, 'dist')
                 },
             ]

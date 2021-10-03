@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+@font-face {
+    font-family: 'Montserrat', sans-serif;
+    src: url('./assets/fonts/Montserrat-Bold.ttf') format('truetype');
+}
 body {
     min-height: 100vh;
     scroll-behavior: smooth;
@@ -21,4 +25,16 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+a {
+    text-decoration: none;
+}
+header, main, footer {
+    display: block;
 }
