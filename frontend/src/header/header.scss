@@ -2,27 +2,49 @@
     width: 100%;
     .header__nav {
         width: 100%;
-        overflow: hidden;
 
         .navbar {
+            position: relative;// here
+
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            padding-top: 30px;
+            // padding-top: 30px;
 
+            &__menu {
+                @media screen and (max-width: 710px) {
+                    display: none;
+                    opacity: 0;
+                    position: absolute;
+                    top: 100%;
+                    right: -100%;
+                    // transition: all .4s ease; // does't work becouse display block
+
+                }
+                &.navbar__menu_mobile {
+                    display: block;
+                    opacity: 1;
+                    right: 0;
+
+                }
+            }
             .menu__list {
                 display: flex;
                 justify-content: space-between;
                 flex-direction: row;
                 width: 100%;
+
+                @media screen and (max-width: 710px) {
+                    flex-direction: column;
+                    
+                }
                 &-item:not(:last-child) {
                     margin-right: 50px;
                 }
                 &-item {
                     position: relative;
-
                     &::after {
                         content: '';
                         position: absolute;
@@ -44,8 +66,61 @@
                         line-height: 1;
                     }
                 }
+
             }
         }
 
+    }
+}
+.burger {
+    display: none;
+
+    @media(max-width: 710px){
+        display: block;
+        margin-right: 50px;
+        position: relative;
+        width: 40px;
+        height: 35px;
+        margin-left: 10px;
+
+        span, &::after, &::before {
+            height: 3px;
+            width: 100%;
+            position: absolute;
+            background: #515758;
+        }
+    
+        span {
+            top: 16px;
+        }
+    
+        &::after, &::before {
+            content: '';
+        }
+    
+        &:after{
+            bottom: 5px;
+        }
+        &:before{
+            top: 5px;
+        }
+    
+    }
+    &.burger_open {
+
+        span {
+            opacity: 0;
+            transition: .5s;
+        }
+        &::before {
+            transform: rotate(38deg);
+            top: 16px;
+            transition: 0.4s;
+        }
+        &::after {
+            transform: rotate(-38deg);
+            bottom: 16px;
+            transition: 0.4s;
+        }
     }
 }

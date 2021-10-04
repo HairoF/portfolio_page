@@ -10,6 +10,17 @@
     &__animation {
         margin-top: calc(286px - 108px);
         flex: 0 0 50%;
+        position: relative;
+        z-index: -1;
+    }
+    @media screen and (max-width: 1000px) {
+        flex-direction: column-reverse;
+
+        &__animation {
+            margin: 30px auto 0 auto;
+            flex: 0 0 50%;
+            width: 50%;
+        }
     }
 
     &__name {
@@ -23,18 +34,30 @@
             font-weight: bold;
             font-size: 78px;
             line-height: 1.16;
+            @media screen and (max-width: 1000px) {
+                margin-top: 108px;
+                text-align: center;
+            }
         }
         .name__subtitle {
             font-style: normal;
             font-weight: normal;
             font-size: 30px;
             line-height: 1.5;
+            @media screen and (max-width: 1000px) {
+                text-align: center;
+            }
         }
         .name__info {
             display: flex;
             flex-wrap: wrap;
-            border: 1px solid red;
+            // border: 1px solid red;
             max-width: 415px;
+            @media screen and (max-width: 1000px) {
+                max-width: 1000px;
+                justify-content: center;
+                margin-top: 50px;
+            }
             &-item {
                 font-style: normal;
                 font-weight: normal;;
