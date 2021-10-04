@@ -2,44 +2,62 @@
     width: 100%;
     .header__nav {
         width: 100%;
+        height: auto;
+        // border: 1px solid red;
+        transition: all .4s ease;
 
+        @media screen and (max-width: 710px) {
+
+            &.header__nav_mobile {
+                height: 200px;
+            }            
+        }
+        
         .navbar {
             position: relative;// here
-
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            // padding-top: 30px;
-
+            padding-top: 30px;
+            &__logo {
+                position: relative;
+                z-index: 1;
+            }
             &__menu {
+                // border: 1px solid red;
+
                 @media screen and (max-width: 710px) {
                     display: none;
-                    opacity: 0;
-                    position: absolute;
-                    top: 100%;
-                    right: -100%;
-                    // transition: all .4s ease; // does't work becouse display block
-
                 }
                 &.navbar__menu_mobile {
                     display: block;
-                    opacity: 1;
+                    position: absolute;
+                    top: 84px;
                     right: 0;
-
+                    width: 100%;
                 }
             }
+
+
             .menu__list {
                 display: flex;
                 justify-content: space-between;
                 flex-direction: row;
                 width: 100%;
-
+                
                 @media screen and (max-width: 710px) {
+                    background: #686262;
                     flex-direction: column;
-                    
+                    align-items: flex-end;
+                    &-item {
+                        margin: 3px!important;
+                        width: 100%;
+                        text-align: end;
+                    }
                 }
+
                 &-item:not(:last-child) {
                     margin-right: 50px;
                 }
@@ -107,7 +125,6 @@
     
     }
     &.burger_open {
-
         span {
             opacity: 0;
             transition: .5s;
@@ -116,11 +133,14 @@
             transform: rotate(38deg);
             top: 16px;
             transition: 0.4s;
+            background:rgb(255, 255, 255);
+
         }
         &::after {
             transform: rotate(-38deg);
             bottom: 16px;
             transition: 0.4s;
+            background:rgb(255, 255, 255);
         }
     }
 }
