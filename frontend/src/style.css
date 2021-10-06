@@ -8,6 +8,7 @@
     src: url('./assets/fonts/Montserrat-Bold.ttf') format('truetype');
 }
 body {
+    font-family: 'Montserrat';
     min-height: 100vh;
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;

@@ -2,7 +2,6 @@
     width: 100%;
     .header__nav {
         width: 100%;
-        height: auto;
         // border: 1px solid red;
         transition: all .4s ease;
 
@@ -27,7 +26,7 @@
             }
             &__menu {
                 // border: 1px solid red;
-
+                transition: all .4s ease;
                 @media screen and (max-width: 710px) {
                     display: none;
                 }
@@ -48,13 +47,19 @@
                 width: 100%;
                 
                 @media screen and (max-width: 710px) {
-                    background: #686262;
+                    background: #262626;
                     flex-direction: column;
                     align-items: flex-end;
                     &-item {
-                        margin: 3px!important;
+                        margin: 3px;
                         width: 100%;
                         text-align: end;
+                        &:first-child {
+                            margin-top: 15px;
+                        }
+                        &:last-child {
+                            margin-right: 50px;
+                        }
                     }
                 }
 
