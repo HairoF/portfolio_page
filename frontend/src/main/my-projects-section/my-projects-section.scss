@@ -1,0 +1,32 @@
+
+
+.my-projects {
+    @media screen and (max-width: 685px) {   
+        &__title, &__subtitle {
+            margin: 0 auto;
+            font-size: 6vw;
+        }
+        
+    }
+}
+.project {
+    p {
+        margin-top: 20px;
+    }
+    &__year {
+        padding-bottom: 5px;
+        border-bottom: 2px solid #fff;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 1.7;
+    }
+    &__description {
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 1.7;
+        // @media screen and (min-width:370px) and (max-width: 685px) {   
+        //     font-size: 3vw;
+        // }
+    }
+}

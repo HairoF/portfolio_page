@@ -1,11 +1,18 @@
 .accordion {
     &__item {
         position: relative;
+        &:hover {
+            background:rgba(12, 18, 39, 0.074);
+        }
         // border: 1px solid red;
         &-icon {
             position: absolute;
             top: 10px;
             right: 25px;
+            width: 24px;
+            height: 24px;
+            background: url('../assets/right-arrow-regular-24.png');
+            transform:rotate(90deg);
             //тут собака сутулая
             .sobaka {
                 position: absolute;
@@ -45,11 +52,17 @@
         }
 
         &.active {
+            background:rgba(12, 18, 39, 0.274);
             .accordion__item-content {
                 display: block;
+                margin-bottom: 10px;
             }
             .accordion-name__text, .accordion-name__num {
                 color: #1378EF;
+            }
+            .accordion__item-icon {
+                transform:rotate(-90deg);
+                top: 70px;
             }
         }
     }
