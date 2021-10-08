@@ -15,3 +15,27 @@ car2.autopilot = false;
 car2.rus = 'Yes';
 console.log(car1)
 console.log(car2)
+
+const obj = {
+    name: 'Pavel',
+    age: 30
+}
+
+Object.defineProperty(Object.prototype, Symbol.iterator, {
+    value: function*() {
+        const arra = Object.entries(this);
+        for(let i of arra) {
+            yield arra[i]
+        }
+    },
+    iterable: false
+})
+const a = [1,2,3]
+for( let key in a){
+    console.log(key + ' ' + 'value');
+}
+for( let [key,value] of obj){
+    console.log(key + ' ' + value);
+}
+
+console.log(800))

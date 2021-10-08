@@ -88,6 +88,14 @@ module.exports = {
                     from: path.resolve(__dirname, 'src/main/animation-circle.svg'),
                     to: path.resolve(__dirname, 'dist/img')
                 },
+                {
+                    from: path.resolve(__dirname, 'src/main/slider/icons/icons-woman.png'),
+                    to: path.resolve(__dirname, 'dist/img')
+                },
+                {
+                    from: path.resolve(__dirname, 'src/main/slider/icons/icons-man.png'),
+                    to: path.resolve(__dirname, 'dist/img')
+                },
             ]
         })
     ],
