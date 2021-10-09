@@ -71,6 +71,9 @@ module.exports = {
         new HtmlWebpackPartialsPlugin({
             path: path.resolve(__dirname, './src/main/main.html')
         }),
+        new HtmlWebpackPartialsPlugin({
+            path: path.resolve(__dirname, './src/footer/footer.html')
+        }),
         new MiniCssExtractPlugin({
             filename: filename('css')
         }),

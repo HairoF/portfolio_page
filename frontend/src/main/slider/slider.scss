@@ -8,6 +8,9 @@
     @media screen and(max-width:1050px) {
         max-width: 420px;
     }
+    @media screen and(max-width:1050px) {
+        margin: 0 auto;
+    }
     &__wrapper {
         overflow: hidden;
     }
@@ -16,7 +19,7 @@
         // border:1px solid rgb(252, 252, 252);
         display: flex;
         flex-direction: row;
-        overflow-x: scroll;
+        overflow-x: hidden;
         &-item {
             width: 39.4vw;
             min-height: 341px;
@@ -29,6 +32,12 @@
             }
         }
     }
+    @media screen and(max-width: 650px) {
+        &__title.title {
+            font-size: 7vw;
+        }
+    }
+
  
     &__nav-prev,&__nav-next {
         width: 70px;
@@ -46,6 +55,13 @@
         position: absolute;
         right: -190px;
         bottom: 128px;
+        @media screen and(min-width:560px) and(max-width: 650px) {
+            right: -90px;
+        }
+        @media screen and(max-width: 560px) {
+            left: 0;
+            bottom: -30px;
+        }
         &::before {
             content: '';
             height: 24px;
@@ -61,6 +77,13 @@
         position: absolute;
         right: -200px;
         bottom: 59px;
+        @media screen and(min-width:560px) and(max-width: 650px) {
+            right: -110px;
+        }
+        @media screen and(max-width: 560px) {
+            left: 150px;
+            bottom: -20px;
+        }
         &::after {
             content: '';
             height: 24px;

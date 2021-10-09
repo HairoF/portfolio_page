@@ -1,0 +1,87 @@
+.footer {
+    background: rgb(18, 18, 18) url('./footer_img.png') no-repeat;
+    min-height: 488px;
+    @media screen and(max-width:768px) {
+        background-size: cover;
+        background-position: center;
+    }
+    &__info {
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        max-width: 650px;
+        width: 100%;
+        @media screen and(max-width:768px) {
+            max-width: 100%;
+            margin: 0;
+            padding: 0 10px;
+            background-color: rgba(18, 18, 18, .5);
+        }
+    }
+
+    &__title {
+        margin-bottom: 35px;
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+        font-size: 2.5rem;
+        line-height: 55px;
+        max-width: 551px;
+    }
+    &__subtitle {
+        color: rgb(255, 255, 255);
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 170%;
+    }
+
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+
+        input, textarea {
+            background: none;
+            margin-top: 20px;
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline:none;
+            padding: 5px 0;
+            font-size: 1rem;
+            color: #fff;
+            &::placeholder {
+                color: #fff;
+            }
+        }
+        textarea {
+            min-height: 102px;
+        }
+        button[type="submit"] {
+            position: relative;
+            color: #fff;
+            background: none;
+            border: none;
+            margin-top: 50px;
+            margin-right: 70px;
+            max-width: 160px;
+            width: 100%;
+            margin-left: auto;
+            margin-bottom: 70px;
+            z-index: 0;
+            &::before {
+                content: '';
+                position: absolute;
+                left: -10px;
+                top: -22px;
+                width: 70px;
+                height: 70px;
+                border-radius: 100%;
+                background: #13a2ef;
+                z-index: -1;
+            }
+        }
+    }
+    .hided__h3 {
+        visibility: hidden;
+    }
+}

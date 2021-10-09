@@ -10,7 +10,7 @@ export default function slider():void {
           slidsField = document.querySelector<HTMLElement>('.slider__cards');
 
     if(!sliderLength) {
-         throw new Error(`Sliders length is null`);
+         throw new Error(`Sliders length is null `);
     }
     
     sliderContainer.addEventListener('click', (event:MouseEvent) => {
