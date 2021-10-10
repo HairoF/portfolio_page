@@ -8,6 +8,9 @@ const HtmlWebpackPartialsPlugin = require('html-webpack-partials-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
+
+console.log('isdev:', isDev);
+
 const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`;
 
 const optimization = () => {
@@ -88,10 +91,6 @@ module.exports = {
                     to: path.resolve(__dirname, 'dist/img')
                 },
                 {
-                    from: path.resolve(__dirname, 'src/main/animation-circle.svg'),
-                    to: path.resolve(__dirname, 'dist/img')
-                },
-                {
                     from: path.resolve(__dirname, 'src/main/slider/icons/icons-woman.png'),
                     to: path.resolve(__dirname, 'dist/img')
                 },
@@ -111,6 +110,7 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: cssLoaders(),
+                sideEffects: true,
             },
             {
                 test: /\.(sa|sc)ss$/,

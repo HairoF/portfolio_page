@@ -28,7 +28,7 @@ export default function slider():void {
                 console.log('2');
                 slidsField.scrollLeft = 0;
             }
-            // console.log(slidsField.scrollLeft, (sliderWidth - 20) * sliderLength);
+            // console.log(<number>(slidsField.scrollLeft) >= sliderContainerWidth, sliderContainerWidth > 420);
         }
 
         if(target.className === 'slider__nav-prev') {
