@@ -35,6 +35,29 @@ const optimization = () => {
 
     return config
 }
+const babelOptions = (preset) => {
+    const opts = {
+        presets: [
+            '@babel/preset-env'   
+        ]
+    }
+
+    if(preset) {
+        opts.presets.push(preset)
+    }
+    return opts
+}
+
+const jsLoaders = () => {
+    const loaders = [{
+        loader:'babel-loader',
+        options: babelOptions()
+    }];
+    if(isDev) {
+        loaders.push('eslint-loader');
+    }
+    return loaders
+}
 
 const cssLoaders = extra => {
     const loaders = [{
@@ -122,7 +145,10 @@ module.exports = {
             },
             {
                 test: /\.ts?$/,
-                use: 'ts-loader',
+                use: {
+                    loader: 'babel-loader',
+                    options: babelOptions('@babel/preset-typescript')
+                },
                 exclude: /node_modules/,
             },
         ],

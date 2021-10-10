@@ -21,11 +21,11 @@ export default function slider():void {
             slidsField.scrollLeft += sliderWidth;
 
             if( <number>(slidsField.scrollLeft) >= ((sliderWidth - 20) * sliderLength) && sliderContainerWidth < 820) { 
-                console.log('1');
+                // console.log('1');
                 slidsField.scrollLeft = 0;
             }
             if( <number>(slidsField.scrollLeft) >= sliderContainerWidth && sliderContainerWidth > 420) { 
-                console.log('2');
+                // console.log('2');
                 slidsField.scrollLeft = 0;
             }
             // console.log(<number>(slidsField.scrollLeft) >= sliderContainerWidth, sliderContainerWidth > 420);

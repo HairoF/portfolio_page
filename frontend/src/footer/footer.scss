@@ -68,6 +68,7 @@
             margin-left: auto;
             margin-bottom: 70px;
             z-index: 0;
+            cursor: pointer;
             &::before {
                 content: '';
                 position: absolute;
@@ -78,6 +79,20 @@
                 border-radius: 100%;
                 background: #13a2ef;
                 z-index: -1;
+            }
+            &:hover {
+                border-right: 1px solid #13a2ef;
+                border-top: 1px solid #13a2ef;
+                border-radius: 15px;
+                &::before {
+                    border: 1px solid #06527b;
+                    left: -9px;
+                    top: -21px;
+                    width: 71px;
+                    height: 71px;
+                    background: radial-gradient(farthest-side ellipse at top left, rgb(37, 190, 237), #13a2ef);
+                    box-shadow: 5px 10px 20px rgba(0,0,0,0.3), -5px -10px 20px rgba(20, 195, 238, 0.5);
+                }
             }
         }
     }

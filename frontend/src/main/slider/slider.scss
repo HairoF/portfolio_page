@@ -71,12 +71,20 @@
             right: -15px;
             background: url('./icons/Vector1.png');
         }
+        &:hover {
+            &::before {
+                right: -3px;
+                transition: all .3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+            }
+        }
     }
     &__nav-next {
         margin-left: 110px;
         position: absolute;
         right: -200px;
         bottom: 59px;
+
         @media screen and(min-width:560px) and(max-width: 650px) {
             right: -110px;
         }
@@ -92,6 +100,13 @@
             top: calc(50% - 12px);
             left: -15px;
             background: url('./icons/Vector.png');
+        }
+        &:hover {
+            &::after {
+                left: -3px;
+                transition: all .3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+            }
         }
     }
     

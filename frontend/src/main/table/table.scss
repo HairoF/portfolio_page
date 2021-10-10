@@ -1,0 +1,20 @@
+table, th, td {
+    border: 1px solid rgb(54, 53, 53);
+}
+.table {
+    &__question {
+        margin: 0 auto;
+        margin-bottom: 30px;
+
+        p {
+            text-align: center;
+        }
+
+        &-small {
+            margin-left: auto;
+        }
+    }
+}
+.table-data {
+    margin: 0 auto;
+}

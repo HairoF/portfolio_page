@@ -5,11 +5,13 @@ import './about-section/about-section.scss';
 import './my-projects-section/my-projects-section.scss';
 import handleTabClick from "./tabs";
 import slider from './slider';
-
+import fromTable from "./table";
 export default function fromMain():void {
     try {
         handleTabClick('.my-projects__tabs');
         slider();
+        fromTable();
+
         canvasApp();
     } catch (error) {
         console.log('error from Main')
@@ -124,7 +126,7 @@ function canvasApp() {
                 y0 = sphereRad*Math.sin(phi)*Math.sin(theta);
                 z0 = sphereRad*Math.cos(phi);
                 
-                //We use the addParticle function to add a new particle. The parameters set the position and velocity components.
+                //We use the addParticle function to add a  new particle. The parameters set the position and velocity components.
                 //Note that the velocity parameters will cause the particle to initially fly outwards away from the sphere center (after
                 //it becomes unstuck).
                 var p = addParticle(x0, sphereCenterY + y0, sphereCenterZ + z0, 0.002*x0, 0.002*y0, 0.002*z0);

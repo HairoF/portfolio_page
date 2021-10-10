@@ -17,7 +17,7 @@ export default function handleTabClick(selector: string):void {
             }
         })
     } catch (error) {
-        console.log(error);
+        throw new Error('Error from Tabs');
     }
  
 }
