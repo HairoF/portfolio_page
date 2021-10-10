@@ -76,7 +76,8 @@ module.exports = {
     mode: 'development',
     context: path.resolve(__dirname, 'src'),
     entry: {
-        index: './index.ts'
+        index: './index.ts',
+        analytics: './analytics.jsx'
     },
     devServer: {
         static: './dist',
@@ -151,10 +152,18 @@ module.exports = {
                 },
                 exclude: /node_modules/,
             },
+            {
+                test: /\.jsx?$/,
+                use: {
+                    loader:'babel-loader',
+                    options: babelOptions('@babel/preset-react')
+                },
+                exclude: /node_modules/,
+            }
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.jsx', '.ts', '.js'],
     },
     optimization: optimization(),
 }
