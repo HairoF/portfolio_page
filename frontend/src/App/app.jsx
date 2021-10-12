@@ -75,6 +75,6 @@ export default class App extends Component{
 const TableContainerDiv = styled.div`
     margin: 0 auto;
     text-align: center;
-    max-width: 560px;
+    max-width: 660px;
     width: 100%;
 `;

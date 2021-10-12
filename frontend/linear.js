@@ -39,3 +39,7 @@ for( let [key,value] of obj){
 }
 
 console.log(800)
+let b = 2
+const a = [{a:1},{a:2}]
+let c = a.find( (el) => el.a === b) 
+console.log(c)
