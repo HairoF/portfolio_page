@@ -11,6 +11,10 @@ body {
 
 }
 
+table, th, td {
+    border: 1px solid rgb(54, 53, 53);
+}
+
 .overlay {
     max-width: $mw;
     width: 100%;

@@ -63,7 +63,8 @@ const cssLoaders = extra => {
     const loaders = [{
             loader: MiniCssExtractPlugin.loader,
         },
-        'css-loader'
+        'css-loader',
+
     ];
     if (extra) {
         loaders.push(extra);
@@ -77,7 +78,7 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     entry: {
         index: './index.ts',
-        analytics: './analytics.jsx'
+        analytics: ['@babel/polyfill', './analytics.jsx']
     },
     devServer: {
         static: './dist',
@@ -138,7 +139,40 @@ module.exports = {
             },
             {
                 test: /\.(sa|sc)ss$/,
-                use: cssLoaders('sass-loader')
+                use: cssLoaders('sass-loader'),
+                sideEffects: true,
+                exclude: /\.module.(s(a|c)ss)$/
+            },
+            {
+                test: /\.module\.(sa|sc)ss$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                        options: {
+                            injectType:
+                                isDev
+                                    ? 'styleTag'
+                                    : 'singletonStyleTag'
+                        }
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: isDev,
+                            importLoaders: 1,
+                            modules: {
+                                localIdentName: "[name]__[local]___[hash:base64:5]",
+                            },
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: isDev
+                        }
+                    }
+                ],
+                exclude: /node_modules/,
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,

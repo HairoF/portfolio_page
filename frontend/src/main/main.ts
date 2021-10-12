@@ -5,12 +5,10 @@ import './about-section/about-section.scss';
 import './my-projects-section/my-projects-section.scss';
 import handleTabClick from "./tabs";
 import slider from './slider';
-import fromTable from "./table";
 export default function fromMain():void {
     try {
         handleTabClick('.my-projects__tabs');
         slider();
-        fromTable();
 
         canvasApp();
     } catch (error) {

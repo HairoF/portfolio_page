@@ -1,2 +1,2 @@
-import TableQuestion from './table-question';
-export default TableQuestion
+import ChooseDataDiv from './table-question';
+export default ChooseDataDiv

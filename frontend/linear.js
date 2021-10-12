@@ -38,4 +38,4 @@ for( let [key,value] of obj){
     console.log(key + ' ' + value);
 }
 
-console.log(800))
+console.log(800)
