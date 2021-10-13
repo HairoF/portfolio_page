@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import TableFullInfo from '../table-full-info';
 
+import styles from './table-body.module.scss';
+
 export default function TableBody({onTBClick, ...props}) {
     const [trId, settrId] = useState({ind: null, obj: null});
     // const [selectObj, setSelectedObj] = useState({})
@@ -18,13 +20,20 @@ export default function TableBody({onTBClick, ...props}) {
             });
         }
     }
-
+    useEffect( () => {//componentDidUpdate in class component
+        if(trId.ind) {
+            document.querySelector(`tr[data-index="${trId.ind}"]`).setAttribute('data-show', '');
+            return () => {
+                document.querySelector(`tr[data-index="${trId.ind}"]`).removeAttribute('data-show', '');
+            }
+        }
+    }, [trId.ind])
     
-    console.log('trid: ' + trId)
+    // console.log('trid: ' + trId)
 
     const trElements = props.data?.map( (td,i) => {
         return(
-            <tr data-index={td.id} key={td.id+i} className="table-data__content">
+            <tr data-index={td.id} key={td.id+i} className={styles.tableDataContent}>
                 <td>{td.id}</td>
                 <td>{td.firstName}</td>
                 <td>{td.lastName}</td>
