@@ -1,11 +1,26 @@
+const HOST = '127.0.0.1', PORT=3000;
+// export default async function getData() {
+//     return await fetch(`http://${HOST}:${PORT}`,{
+//         method : "GET",
+//     })
+//     .then(response => respone.status === 200 ? response.text(): 'Some error from fetch getData. status: '+response.status)
+
+// }
 export default async function getData() {
-    let response = await fetch('http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}',{
-        method : "GET",
-        mode: 'cors'
+    // window.location.href = '/'
+    console.log(`fetch to: http://${HOST}:${PORT}/`, 'from: '+window.location.origin)
+
+    return await fetch(`http://${HOST}:${PORT}`,{
+        method : "GET"
     })
-
-    if (response.status === 200) return await response.json()
-
-    return `Error from fetch: ${response.status}`
+    .then( (res)=>{
+        if(res.status === 200) {
+            console.log('status: ', res.status, res.statusText, 'response is: ',res)
+            return res.json()
+        }else{
+            console.log('error', res)
+        }
+        
+    })
 
 }
