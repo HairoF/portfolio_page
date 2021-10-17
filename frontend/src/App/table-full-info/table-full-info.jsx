@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 export default function TableFullInfo(prop) {
     const {firstName,lastName,description,address} = prop.fullInfo;
-    console.log(prop)
+    // console.log(prop)
     return (
         <tr>
             <td colSpan="5">

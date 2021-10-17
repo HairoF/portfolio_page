@@ -6,8 +6,7 @@ const HOST = '127.0.0.1', PORT=3000;
 //     .then(response => respone.status === 200 ? response.text(): 'Some error from fetch getData. status: '+response.status)
 
 // }
-export default async function getData() {
-    // window.location.href = '/'
+async function getData() {
     console.log(`fetch to: http://${HOST}:${PORT}/`, 'from: '+window.location.origin)
 
     return await fetch(`http://${HOST}:${PORT}`,{
@@ -22,5 +21,22 @@ export default async function getData() {
         }
         
     })
+    .catch(err => console.log('Err from fetch:', err))
 
 }
+async function getDatasPage(page) {
+    console.log('fetch to: http://${HOST}:${PORT}/:id', 'page is: '+ page)
+
+    return await fetch(`http://${HOST}:${PORT}/${page}/`,{
+        method : "GET"
+    })
+    .then( fivePages => {
+        if (fivePages.status === 200) {
+            fivePages.json()
+        } else {
+            console.log('error', fivePages.status)
+        }
+    })
+}
+
+export {getData, getDatasPage}

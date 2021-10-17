@@ -6,14 +6,15 @@ import styles from './table-body.module.scss';
 export default function TableBody({onTBClick, ...props}) {
     const [trId, settrId] = useState({ind: null, obj: null});
     // const [selectObj, setSelectedObj] = useState({})
-    // console.log(trId)
+    console.log('trId i: ',trId)
 
 
     async function onTableRowClick(e) {
-        console.log('event', e.target.parentNode);
-        const index = e.target.parentNode.dataset.index
+        const target = Number(e.target.parentNode.dataset.index);
+        const index = target !== trId.ind ? target : 0;
         const selOb = await props?.data?.find( (el) => Number(el.id) === Number(index) );
-        if(index) {
+        if(index !== null & index !== undefined) {
+            console.log('condition 0 is work. Index is: ', index)
             settrId({
                 ind: Number(index),
                 obj:selOb
@@ -32,14 +33,18 @@ export default function TableBody({onTBClick, ...props}) {
     // console.log('trid: ' + trId)
 
     const trElements = props.data?.map( (td,i) => {
+        const j = Math.random() + i
         return(
-            <tr data-index={td.id} key={td.id+i} className={styles.tableDataContent}>
-                <td>{td.id}</td>
-                <td>{td.firstName}</td>
-                <td>{td.lastName}</td>
-                <td>{td.email}</td>
-                <td>{td.phone}</td>
-            </tr>
+            <>
+                <tr data-index={td.id} key={td.id+i} className={styles.tableDataContent}>
+                    <td>{td.id}</td>
+                    <td>{td.firstName}</td>
+                    <td>{td.lastName}</td>
+                    <td>{td.email}</td>
+                    <td>{td.phone}</td>
+                </tr>
+                {trId.ind === td.id ? <TableFullInfo key={j} fullInfo={trId.obj}/> : null}
+            </>
         )
     });
 
@@ -54,7 +59,7 @@ export default function TableBody({onTBClick, ...props}) {
                 <th>Phone</th>
             </tr>
             {props.data ? trElements : null}
-            {trId.ind ? <TableFullInfo fullInfo={trId.obj}/> : null}
+            
         </tbody>
     )
 }

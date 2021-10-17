@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import getData from './services';
+import {getData, getDatasPage} from './services';
 
-import ChooseDataDiv from './table-question';
+import ChooseDataDiv from './choose-data-div';
 import TableBody from './table-body';
+import Pagination from './pagination';
 
 import styled from 'styled-components'
 import styles from './app.module.scss';
@@ -13,7 +14,8 @@ export default class App extends Component{
         super(props)
         this.state = {
             clicked: {leftClicked: false, rightClicked: false},
-            dataTable: []
+            dataTable: [],
+            pages: null
         };
         this.onSmallClick = this.onSmallClick.bind(this);
         this.onTBodyClick = this.onTBodyClick.bind(this);
@@ -22,19 +24,18 @@ export default class App extends Component{
         if(tagname.indexOf('left') !== -1) {
             
             getData()
-                .then( (response) => {
+                .then( ({data,pages}) => {
                     this.setState( ()=> ({
                         clicked: {
                             leftClicked: true,
                             rightClicked: false
                         },
-                        dataTable: response
+                        dataTable: data,
+                        pages: Number(pages)
                     }))
                 })
-                .catch(err => console.log('err from fetch data', err))
-
-
         }
+
         if(tagname.indexOf('right') !== -1) {
             console.log(`Text of this button is: ${value}`);
             this.setState( ()=> ({
@@ -56,7 +57,7 @@ export default class App extends Component{
 
     render() {
         const {leftClicked, rightClicked} = this.state.clicked;
-        const dataTable = this.state.dataTable.length > 0 ? this.state.dataTable : null;
+        const dataTable = this.state.dataTable?.length > 0 ? this.state.dataTable : null;
         // console.log(this.state.dataTable)
         return (
         <TableContainerDiv>
@@ -69,6 +70,7 @@ export default class App extends Component{
                 <TableBody
                     onHandleSmallClick={this.onSmallClick} onTBClick={this.onTBodyClick} data={dataTable}/>
             </table>
+            {this.state.pages ? <Pagination pages={this.state.pages}/> : null}
         </TableContainerDiv>
         )
     }
