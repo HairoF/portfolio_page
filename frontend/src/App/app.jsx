@@ -43,6 +43,8 @@ export default class App extends Component{
                     rightClicked: true
                 }
             }))
+            getData()
+                .then(( res => console.log('response :', res)))
         }
 
     }
