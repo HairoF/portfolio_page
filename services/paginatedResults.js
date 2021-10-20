@@ -7,4 +7,14 @@ function paginatedResults(req,res,next) {
     next()
 }
 
-module.exports = {paginatedResults};
+function updatePage(req,res,next) {
+    console.log('update page ',req.params.page)
+    const limit = 5;
+    const startIndex = (req.params.page - 1) * limit;
+    const endIndex = req.params.page * limit;
+    req.limitedData = req.tableData.slice(startIndex,endIndex);
+    console.log(req.limitedData)
+    next()
+}
+
+module.exports = {paginatedResults, updatePage};

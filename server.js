@@ -5,7 +5,7 @@ const host = '127.0.0.1';
 const port = 3000;
 
 const {dataApi} = require('./services/dataApi');
-const {paginatedResults} = require('./services/paginatedResults');
+const {paginatedResults, updatePage} = require('./services/paginatedResults');
 
 app.use('/', dataApi)
 
@@ -28,10 +28,10 @@ app.get('/', paginatedResults, function(req,res) {
     // .then( json => res.send(json))
 })
 
-app.get('/:id', function(req,res) {
+app.get('/:page', updatePage, function(req,res) {
     res.set('Access-Control-Allow-Origin', '*')
-    console.log('path: /:id', '\n', req.query)
-    res.send(req.params)
+    console.log('path: /:id', '\n', req.params)
+    res.send(JSON.stringify(req.limitedData) )
 })
 
 

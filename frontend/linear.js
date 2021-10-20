@@ -39,10 +39,14 @@ Object.defineProperty(Object.prototype, Symbol.iterator, {
     iterable: false
 })
 const a = [1,2,3]
-for( let key in a){
-    console.log(key + ' ' + 'value');
+const obj = {
+    name: 'Pavel',
+    age: 30
 }
-for( let key of obj){
+// for( let key in a){
+//     console.log(key + ' ' + 'value');
+// }
+for( let key in obj){
     console.log(key + ' ' + obj[key]);
 }
 

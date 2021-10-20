@@ -18,7 +18,7 @@ export default class App extends Component{
             pages: null
         };
         this.onSmallClick = this.onSmallClick.bind(this);
-        this.onTBodyClick = this.onTBodyClick.bind(this);
+        this.handlePagination = this.handlePagination.bind(this);
     }
     onSmallClick(value,tagname) {
         if(tagname.indexOf('left') !== -1) {
@@ -43,15 +43,18 @@ export default class App extends Component{
                     leftClicked: false,
                     rightClicked: true
                 }
-            }))
-            getData()
-                .then(( res => console.log('response :', res)))
+            }));
         }
 
     }
 
-    onTBodyClick(index) {
-        
+    handlePagination(page) {
+        getDatasPage(page)
+            .then( updatePage => {
+                this.setState({
+                    dataTable: updatePage
+                })
+            })
     }
 
 
@@ -68,9 +71,9 @@ export default class App extends Component{
             />
             <table className={styles.tableData}>
                 <TableBody
-                    onHandleSmallClick={this.onSmallClick} onTBClick={this.onTBodyClick} data={dataTable}/>
+                    onHandleSmallClick={this.onSmallClick} data={dataTable}/>
             </table>
-            {this.state.pages ? <Pagination pages={this.state.pages}/> : null}
+            {this.state.pages ? <Pagination pages={this.state.pages} onPageClick={this.handlePagination}/> : null}
         </TableContainerDiv>
         )
     }

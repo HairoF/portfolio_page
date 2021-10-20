@@ -81,9 +81,11 @@ module.exports = {
         analytics: ['@babel/polyfill', './analytics.jsx']
     },
     devServer: {
+        hot:true,
+        liveReload: false,
         static: './dist',
     },
-    devtool: 'source-map',
+    devtool: 'inline-source-map',
     output: {
         filename: filename('js'),
         path: path.resolve(__dirname, 'dist'),

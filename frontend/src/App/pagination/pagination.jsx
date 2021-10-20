@@ -1,17 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
-export default function Pagination(prop) {
+export default function Pagination(props) {
+    // let [currentPage, setCurrentPage] = useState(1);
+    const page = Array.from( Array(props.pages).keys() );
 
-    const page = Array.from( Array(prop.pages).keys() );
-    console.log(page)
+    function onLinkClick(e) {
+        if(e.target.tagName === 'A') {
+            e.preventDefault();
+
+            props.onPageClick(e.target.textContent)
+        }
+    }
+
     const elementsList = page.map((el)=> {
-        return <li>{Number(el) + 1}</li>
+        let href = `/:page=${Number(el) + 1}`
+        return <li><a href={href} className="pagination">{Number(el) + 1}</a></li>
     })
     return (
-        <Ul className="pagination">
+        <Ul className="pagination" onClick={onLinkClick}>
+            <li><a href="/:page1" className="pagination">Prev</a></li>
             {elementsList}
-            <li>Next</li>
+            <li><a href="/" className="pagination">Next</a></li>
         </Ul>
     )
 }
@@ -22,9 +32,16 @@ const Ul = styled.ul`
         margin-top: 20px;
     }
     li {
-        border: 1px solid grey;
-        cursor: pointer;
         margin: 0 5px;
-        padding: 0 5px;
+    }
+    a {
+        display: block;
+        border: 1px solid blue;
+        border-radius: 100%;
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        line-height: 34px;
+
     }
 `;

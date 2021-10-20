@@ -27,15 +27,15 @@ async function getData() {
 async function getDatasPage(page) {
     console.log('fetch to: http://${HOST}:${PORT}/:id', 'page is: '+ page)
 
-    return await fetch(`http://${HOST}:${PORT}/${page}/`,{
+    return await fetch(`http://${HOST}:${PORT}/${page}`,{
         method : "GET"
     })
     .then( fivePages => {
         if (fivePages.status === 200) {
-            fivePages.json()
-        } else {
-            console.log('error', fivePages.status)
+            return fivePages.json()
         }
+    }).catch(err => {
+        console.log('error', fivePages.status)
     })
 }
 

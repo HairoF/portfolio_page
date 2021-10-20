@@ -3,7 +3,7 @@ import TableFullInfo from '../table-full-info';
 
 import styles from './table-body.module.scss';
 
-export default function TableBody({onTBClick, ...props}) {
+export default function TableBody(props) {
     const [trId, settrId] = useState({ind: null, obj: null});
     // const [selectObj, setSelectedObj] = useState({})
     console.log('trId i: ',trId)
