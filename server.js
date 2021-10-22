@@ -28,7 +28,7 @@ app.get('/', paginatedResults, function(req,res) {
     // .then( json => res.send(json))
 })
 
-app.get('/:page', updatePage, function(req,res) {
+app.get('/:arrow/:page', updatePage, function(req,res) {
     res.set('Access-Control-Allow-Origin', '*')
     console.log('path: /:id', '\n', req.params)
     res.send(JSON.stringify(req.limitedData) )

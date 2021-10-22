@@ -10,10 +10,25 @@ function paginatedResults(req,res,next) {
 function updatePage(req,res,next) {
     console.log('update page ',req.params.page)
     const limit = 5;
-    const startIndex = (req.params.page - 1) * limit;
-    const endIndex = req.params.page * limit;
+    let startIndex  = 1;
+    let endIndex = 5;
+
+        // switch(req.params.arrow){
+        //     case 'prev':
+        //         // startIndex = ((req.params.page - 2) * limit) >= 0 ? ((req.params.page - 1) * limit) : 0 // -2 instead -1
+        //         // endIndex = req.params.page * limit;
+        //         break;
+
+        //     case 'next':
+        //         break;
+
+        //     default: 
+                startIndex = ((req.params.page - 1) * limit) >= 0 ? ((req.params.page - 1) * limit) : 0;
+                endIndex = req.params.page * limit;
+        // }
+    
     req.limitedData = req.tableData.slice(startIndex,endIndex);
-    console.log(req.limitedData)
+
     next()
 }
 

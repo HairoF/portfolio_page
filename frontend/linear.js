@@ -66,3 +66,48 @@ for(let [key,value] in iterableCollection) {
         console.log(`${key} -  is ${value}`)
     },1000)
 }
+
+function carry(a) {
+    return function(b) {
+        return console.log(a+b);
+    }
+}
+carry(2)(5)
+
+let forClosure = [1, 2, 3, 4, 5, 6, 7];
+
+// function inBetween(a,b) {
+//     return function(el,i) {
+//         return el >= a && el <= b
+//     }
+// }
+// console.log(forClosure.filter(inBetween(3,6)));
+
+function inArray(array) {
+    return function(el) {
+        return array.includes(el)
+    }
+}
+console.log(forClosure.filter(inArray([1,2,3])));
+
+let users = [
+    { name: "John", age: 20, surname: "Johnson" },
+    { name: "Pete", age: 18, surname: "Peterson" },
+    { name: "Ann", age: 19, surname: "Hathaway" }
+];
+
+function byField(key) {
+    return function(el, nextEl) {
+        return el[key] > nextEl[key] ? 1 : -1
+    }
+}
+users.sort(byField('name'))
+users.sort(byField('age'))
+console.log(users);
+
+let wndws = {ubuntu: 'also best'}
+global.ubuntu = 'bestofthebest'
+function f1() {
+    return this.ubuntu
+}
+console.log(f1.call(wndws));

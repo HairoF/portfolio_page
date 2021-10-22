@@ -48,8 +48,8 @@ export default class App extends Component{
 
     }
 
-    handlePagination(page) {
-        getDatasPage(page)
+    handlePagination(arrow, page) {
+        getDatasPage(arrow, page)
             .then( updatePage => {
                 this.setState({
                     dataTable: updatePage
@@ -61,27 +61,29 @@ export default class App extends Component{
     render() {
         const {leftClicked, rightClicked} = this.state.clicked;
         const dataTable = this.state.dataTable?.length > 0 ? this.state.dataTable : null;
-        // console.log(this.state.dataTable)
+        
         return (
-        <TableContainerDiv>
-            <ChooseDataDiv 
-                leftClicked={leftClicked}
-                rightClicked={rightClicked}
-                onHandleSmallClick={this.onSmallClick}
-            />
-            <table className={styles.tableData}>
-                <TableBody
-                    onHandleSmallClick={this.onSmallClick} data={dataTable}/>
-            </table>
-            {this.state.pages ? <Pagination pages={this.state.pages} onPageClick={this.handlePagination}/> : null}
-        </TableContainerDiv>
+            <TableContainerDiv>
+                <ChooseDataDiv 
+                    leftClicked={leftClicked}
+                    rightClicked={rightClicked}
+                    onHandleSmallClick={this.onSmallClick}
+                />
+                <table className={styles.tableData}>
+                    <TableBody
+                        onHandleSmallClick={this.onSmallClick} data={dataTable}/>
+                </table>
+                {this.state.pages ? <Pagination pages={this.state.pages} onPageClick={this.handlePagination}/> : null}
+            </TableContainerDiv>
         )
     }
 }
 
 const TableContainerDiv = styled.div`
+    position: relative;
     margin: 0 auto;
     text-align: center;
     max-width: 660px;
+    min-height: 322px;
     width: 100%;
 `;

@@ -1,13 +1,14 @@
 import './header.scss';
 const burger = document.querySelector('.burger') as HTMLDivElement;
-const menuList = document.querySelector('.menu__list') as HTMLUListElement;
+
+
 export default function fromHeader():void {
     burger.addEventListener('click', toggleBurger);
-    // menuList.addEventListener('click', toggleBurger);
-    scrollAnchors();
+    // menuList.addEventListener('click', toggleBurger); // if enable does't work scrollAnchors()
+    scrollAnchors('.menu__list');
 }
 
-function toggleBurger(event:MouseEvent) {
+function toggleBurger() {
         
     burger.classList.toggle('burger_open');
 
@@ -20,19 +21,18 @@ function toggleBurger(event:MouseEvent) {
 
 }
 
-function scrollAnchors():void {
+function scrollAnchors(selector:string):void {
+    const menuList = document.querySelector(selector) as HTMLUListElement;
 
-    const menuList = document.querySelector('.menu__list');
     menuList.addEventListener('click', (event:MouseEvent) => {
         const target = event.target as HTMLElement;
 
         if(target.tagName === "A") {
             event.preventDefault();
-            const h3 = document.querySelector(`h3[data-${target.dataset.anchor}]`).scrollIntoView({
+            document.querySelector(`h3[data-${target.dataset.anchor}]`).scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
-            console.log(document.querySelector(`h3[data-${target.dataset.anchor}]`))
         }
     })
 }

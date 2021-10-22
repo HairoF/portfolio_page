@@ -35,6 +35,7 @@ ol[class] {
 }
 a {
     text-decoration: none;
+    color:white;
 }
 header, main, footer, nav {
     display: block;

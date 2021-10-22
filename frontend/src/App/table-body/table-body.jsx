@@ -21,7 +21,7 @@ export default function TableBody(props) {
             });
         }
     }
-    useEffect( () => {//componentDidUpdate in class component
+    useEffect( () => {//componentDidUpdate 
         if(trId.ind) {
             document.querySelector(`tr[data-index="${trId.ind}"]`).setAttribute('data-show', '');
             return () => {
@@ -30,27 +30,26 @@ export default function TableBody(props) {
         }
     }, [trId.ind])
     
-    // console.log('trid: ' + trId)
 
     const trElements = props.data?.map( (td,i) => {
-        const j = Math.random() + i
+        const j = (Math.random()*10) + i
         return(
             <>
-                <tr data-index={td.id} key={td.id+i} className={styles.tableDataContent}>
+                <tr data-index={td.id} key={td.id+j} className={styles.tableDataContent}>
                     <td>{td.id}</td>
                     <td>{td.firstName}</td>
                     <td>{td.lastName}</td>
                     <td>{td.email}</td>
                     <td>{td.phone}</td>
                 </tr>
-                {trId.ind === td.id ? <TableFullInfo key={j} fullInfo={trId.obj}/> : null}
+                {trId.ind === td.id ? <TableFullInfo key={j+i} fullInfo={trId.obj}/> : null}
             </>
         )
     });
 
  
     return (
-        <tbody onClick={onTableRowClick.bind(this)}>
+        <tbody onClick={onTableRowClick}>
             <tr className="table-data__title">
                 <th>id</th>
                 <th>First name</th>
