@@ -81,9 +81,12 @@ module.exports = {
         analytics: ['@babel/polyfill', './analytics.jsx']
     },
     devServer: {
-        hot:true,
-        liveReload: false,
-        static: './dist',
+        hot: true,
+        static:  './dist'
+    },
+    watchOptions: {
+        aggregateTimeout: 200,
+        ignored: /node_modules/
     },
     devtool: 'inline-source-map',
     output: {

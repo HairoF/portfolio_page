@@ -15,6 +15,22 @@
                         <li class="menu__list-item"><a href="#" data-anchor="contacts">Contacts</a></li>
                     </ul>
                 </nav>
+                <div class="authentication">
+                    <a class="log button authentication--log" href="/" data-id="log">Log in</a>
+                    <a class="sign button" href="/" data-id="sign">Sign up</a>
+                    <form class="authentication-window" data-id="auth">
+                        <p class="authentication-window__message">Authentication</p>
+                        <input type="email" class="input authentication-window__email" placeholder="email" value="" required>
+                        <input type="password" class="input authentication-window__password" placeholder="password" value="" required>
+                        <input type="submit" class="input button authentication-window__submit" value="Log in">
+                    </form>
+                    <form class="authentication-window" data-id="regis">
+                        <p class="authentication-window__message">Registration</p>
+                        <input type="email" class="input authentication-window__email" placeholder="email" value="">
+                        <input type="password" class="input authentication-window__password" placeholder="password" value="">
+                        <input type="submit" class="input button authentication-window__submit" value="Sign Up">
+                    </form>
+                </div>
                 <div class="burger">
                     <span></span>
                 </div>

@@ -1,4 +1,4 @@
-class TeslaCar {
+export default class TeslaCar {
     constructor(model, prive, interior, autopilot) {
         this.model = model;
         this.prive = prive;
@@ -105,9 +105,13 @@ users.sort(byField('name'))
 users.sort(byField('age'))
 console.log(users);
 
-let wndws = {ubuntu: 'also best'}
-global.ubuntu = 'bestofthebest'
-function f1() {
-    return this.ubuntu
-}
-console.log(f1.call(wndws));
+let a = 111;
+const obj = {
+    a: 222,
+    foo() {
+        () => console.log(6%3)()
+    }
+};
+obj.foo()
+
+console.log( Array.from(new Set('AAABBCCC')) );
