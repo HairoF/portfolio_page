@@ -57,46 +57,98 @@ function notAuthorized(target:HTMLElement, auth:Reg, signButton:HTMLAnchorElemen
 
         
         (<HTMLFormElement>target.parentNode).dataset.id === 'auth'
-            ? ( checkFields(target) ) ? handleAuthAction(auth, signButton, logButton) : null
-            : ( checkFields(target) ) ? handleRegAction(auth, signButton, logButton) : null;
+            ? handleAuthAction(auth, signButton, logButton, target)
+            : handleRegAction(auth, signButton, logButton, target);
 
     }
 }
 
-function handleRegAction(auth:Reg, signButton:HTMLAnchorElement, logButton:HTMLAnchorElement) {
+function handleRegAction(auth:Reg, signButton:HTMLAnchorElement, logButton:HTMLAnchorElement, target:HTMLElement) {
+    return new Promise(function(resolve, reject) {
+        isInvalidFields(target) ? resolve(true) : reject('Invalid field')
+    }).then(() => {
+        console.log('sending to server...');
+        logButton.style.pointerEvents = 'none';
+        logButton.style.opacity = '0.5';
+    }).then(() => {
+        return new Promise(resolve => setTimeout(() => {
+            console.log('Welcome friend!')
+            resolve(true) 
+
+        }, 2000) )
+    }).then(() => {
+        (<HTMLFormElement>target.parentNode).classList.remove('show');
+        signButton.style.display = 'none';
+        logButton.textContent = 'Log out';
+
+        logButton.style.pointerEvents = 'visible';
+        logButton.style.opacity = '1';
+
+        auth.isAuth = true;
+        console.log("Now you logged in");
+    }).catch((message) => {
+        console.log(message);
+        (<HTMLFormElement>target.parentNode).style.boxShadow = '2px 2px 4px 2px red';
+        setTimeout(() => {
+            (<HTMLFormElement>target.parentNode).style.boxShadow = 'none';
+            logButton.style.pointerEvents = 'visible';
+            logButton.style.opacity = '1';
+        }, 1500);
+    })
+}
+
+function handleAuthAction(auth:Reg, signButton:HTMLAnchorElement, logButton:HTMLAnchorElement, target:HTMLElement) {
+    return new Promise(function(resolve, reject) {
+        isInvalidFields(target) ? resolve(true) : reject('Invalid field')
+    }).then(() => {
+        console.log('sending to server...');
+        logButton.style.pointerEvents = 'none';
+        logButton.style.opacity = '0.5';
+    }).then(() => {
+        return new Promise( (resolve,reject) => setTimeout(() => {
+            console.log('We find you!')
+            resolve(true)
+
+        }, 2000) )
+    }).then(() => {
+        (<HTMLFormElement>target.parentNode).classList.remove('show');
+        signButton.style.display = 'none';
+        logButton.textContent = 'Log out';
+
+        logButton.style.pointerEvents = 'visible';
+        logButton.style.opacity = '1';
+
+        auth.isAuth = true;
+        console.log("Now you logged in");
+    }).catch((message) => {
+        console.log(message);
+        (<HTMLFormElement>target.parentNode).style.boxShadow = '2px 2px 4px 2px red';
+        setTimeout(() => {
+            (<HTMLFormElement>target.parentNode).style.boxShadow = 'none';
+            logButton.style.pointerEvents = 'visible';
+            logButton.style.opacity = '1';
+        }, 1500);
+    })
+}
+
+function isInvalidFields(target:HTMLElement):boolean {
+    const inputs = Array.from(target.parentNode.querySelectorAll('.input') as NodeListOf<Element>);
+
+    let pass:boolean = inputs.every((element:HTMLInputElement) => !!element.value );
+
+    if(inputs.length > 0 && !pass ) {
         
-    signButton.style.display = 'none';
-    logButton.style.pointerEvents = 'none';
-    logButton.style.opacity = '0.5';
-    logButton.textContent = 'Log out';
+        inputs.forEach( (element:HTMLInputElement) => {
+            (!element.value) 
+                ? element.classList.add('authentication-window--error') 
+                : element.classList.remove('authentication-window--error');
+        })
+    } else {
 
-    setTimeout(() => {
-        console.log('Now you signed up');
-        auth.isAuth = true;
-        logButton.style.pointerEvents = 'visible';
-        logButton.style.opacity = '1';
-    }, 2000);
-}
-
-function handleAuthAction(auth:Reg, signButton:HTMLAnchorElement, logButton:HTMLAnchorElement):void {
-  
-    signButton.style.display = 'none';
-    logButton.style.pointerEvents = 'none';
-    logButton.style.opacity = '0.5';
-    logButton.textContent = 'Log out';
-
-    setTimeout(() => {
-        console.log('Now you logged in');
-        auth.isAuth = true;
-        logButton.style.pointerEvents = 'visible';
-        logButton.style.opacity = '1';
-    }, 2000);
-}
-
-function checkFields(target:HTMLElement):boolean {
-    (!!(target.parentNode.querySelector<HTMLInputElement>('.input').value)) 
-        ? (<HTMLFormElement>target.parentNode).classList.remove('show')
-        : null;
-    
-    return !!(target.parentNode.querySelector<HTMLInputElement>('.input').value)
+        inputs.forEach( (element:HTMLInputElement) => {
+            element.classList.remove('authentication-window--error');
+            element.value = '';
+        })
+    }    
+    return pass
 }

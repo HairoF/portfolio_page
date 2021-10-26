@@ -5,7 +5,7 @@
         // border: 1px solid red;
         transition: all .4s ease;
 
-        @media screen and (max-width: 710px) {
+        @media screen and (max-width: 768px) {
 
             &.header__nav_mobile {
                 height: 200px;
@@ -28,7 +28,7 @@
             &__menu {
                 // border: 1px solid red;
                 // transition: all .4s ease;
-                @media screen and (max-width: 710px) {
+                @media screen and (max-width: 768px) {
                     display: none;
                 }
                 &.navbar__menu_mobile {
@@ -37,7 +37,7 @@
                     position: absolute;
                     top: 0;
                     background: #262626;
-                    height: 100vh;
+                    height: 600%;
                     right: 0;
                     transition: all 0.4s ease;
                     width: 100%;
@@ -51,7 +51,7 @@
                 flex-direction: row;
                 width: 100%;
                 
-                @media screen and (max-width: 710px) {
+                @media screen and (max-width: 768px) {
                     // background: #262626;
                     flex-direction: column;
                     align-items: flex-end;
@@ -61,7 +61,7 @@
                         width: 100%;
                         text-align: end;
                         &:last-child {
-                            margin-right: 50px;
+                            margin-right: 4vw;
                         }
                         a[data-anchor] {
                             font-size: 2rem;
@@ -70,7 +70,7 @@
                 }
 
                 &-item:not(:last-child) {
-                    margin-right: 50px;
+                    margin-right: 4vw;
                 }
                 &-item {
                     position: relative;
@@ -104,7 +104,7 @@
 .burger {
     display: none;
 
-    @media(max-width: 710px){
+    @media(max-width: 768px){
         display: block;
         margin-right: 50px;
         position: relative;

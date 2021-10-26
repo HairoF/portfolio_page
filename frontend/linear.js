@@ -114,4 +114,14 @@ const obj = {
 };
 obj.foo()
 
-console.log( Array.from(new Set('AAABBCCC')) );
+console.log( a());
+
+function a() {
+    let aa = {a: 'a'};
+    
+    b(aa)
+    return aa
+}
+function b(aa) {
+    aa.a = 'A'
+}

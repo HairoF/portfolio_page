@@ -34,6 +34,10 @@ app.get('/:arrow/:page', updatePage, function(req,res) {
     res.send(JSON.stringify(req.limitedData) )
 })
 
+app.post('/auth', function(req,res) {
+    console.log(req.body)
+})
+
 
 app.listen(port, host, function() {
 console.log(`Server listens http://${host}:${port}`)
